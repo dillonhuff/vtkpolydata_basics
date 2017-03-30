@@ -70,11 +70,11 @@ int main() {
   triangle->GetPointIds()->SetId(1, p1_0_0);
   triangle->GetPointIds()->SetId(2, p0_1_0);
   
-  // Add the triangle
-  vtkSmartPointer<vtkCellArray> triangles =
+  // Add the triangle to polygons
+  vtkSmartPointer<vtkCellArray> polygons =
     vtkSmartPointer<vtkCellArray>::New();
 
-  triangles->InsertNextCell(triangle);
+  polygons->InsertNextCell(triangle);
   
   // Create the actual vtkPolyData
   vtkSmartPointer<vtkPolyData> polyData =
@@ -83,7 +83,7 @@ int main() {
   // Add the geometry and topology to the polydata
   polyData->SetPoints(points);
   polyData->SetLines(lines);
-  polyData->SetPolys(triangles);
+  polyData->SetPolys(polygons);
 
   // Print out some data about the vtkPolydata
   cout << "# of lines    = " << polyData->GetNumberOfLines() << endl;
